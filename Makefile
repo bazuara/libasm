@@ -6,7 +6,7 @@
 #    By: bazuara <bazuara@student.42madrid.>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/18 12:35:19 by bazuara           #+#    #+#              #
-#    Updated: 2021/03/18 12:43:22 by bazuara          ###   ########.fr        #
+#    Updated: 2021/03/22 09:40:59 by bazuara          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,11 @@ NAME = libasm
 # Lib path
 LIBFT_FOLDER = ./libft/
 LIBFT = $(LIBFT_FOLDER)libft.a
+LIBFT_INC = $(LIBFT_FOLDER)incs/
 
 # Source files
 SOURCE_FOLDER = src/
-SOURCE_FILES = \
+SOURCE_FILES = main.c
 
 SOURCE = $(addprefix $(SOURCE_FOLDER), $(SOURCE_FILES))
 
@@ -39,7 +40,7 @@ all:	$(NAME)
 $(NAME):
 	@git submodule update
 	@make -C $(LIBFT_FOLDER)
-	@gcc $(SOURCE)
+	@gcc $(SOURCE) -I$(LIBFT_INC) -o $(NAME)
 
 # Rule to remove object files
 clean:
