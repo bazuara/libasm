@@ -6,27 +6,28 @@
 #    By: bazuara <bazuara@student.42madrid.>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/18 12:35:19 by bazuara           #+#    #+#              #
-#    Updated: 2021/03/22 09:40:59 by bazuara          ###   ########.fr        #
+#    Updated: 2021/03/23 09:39:42 by bazuara          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = libasm
 
-# Lib path
-LIBFT_FOLDER = ./libft/
-LIBFT = $(LIBFT_FOLDER)libft.a
-LIBFT_INC = $(LIBFT_FOLDER)incs/
-
 # Source files
 SOURCE_FOLDER = src/
-SOURCE_FILES = main.c
+SOURCE_FILES = ft_strlen.s
+TEST_FILES = main.c
 
 SOURCE = $(addprefix $(SOURCE_FOLDER), $(SOURCE_FILES))
 
+# Objects
+
+OBJECTS_C = $(TEST_FILES:.c=.o)
+OBJECTS_S = $(SOURCE_FILES:.s=.o)
+
 # Header files
 HEADER_FOLDER = incs\
-HEADER_FILES = \
+HEADER_FILES = 
 
 HEADERS = $(addprefix $(HEADER_FOLDER), $(HEADER_FILES))
 
@@ -38,13 +39,12 @@ all:	$(NAME)
 
 # Rule to build your object files and link them into a binary
 $(NAME):
-	@git submodule update
-	@make -C $(LIBFT_FOLDER)
-	@gcc $(SOURCE) -I$(LIBFT_INC) -o $(NAME)
+	gcc $(SOURCE) -I$(HEADER_FOLDER) -o $(NAME)
 
 # Rule to remove object files
 clean:
-	@make clean -C $(LIBFT_FOLDER)
+	@echo $(OBJECTS_S)
+	@echo $(OBJECTS_C)
 
 # Rule to remove binary, calls the 'clean' rule first
 fclean: clean
@@ -54,10 +54,6 @@ fclean: clean
 
 # Rule to remove object files and binary, then re-build everything
 re:	fclean all
-
-# Rule to test norminette
-normi:	
-	@norminette $(SOURCE) $(HEADERS)
 
 # Rule to debug, include norminette and similars
 test: fclean
