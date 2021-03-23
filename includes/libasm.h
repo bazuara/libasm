@@ -6,7 +6,7 @@
 /*   By: bazuara <bazuara@student.42madrid.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 09:34:59 by bazuara           #+#    #+#             */
-/*   Updated: 2021/03/23 10:43:41 by bazuara          ###   ########.fr       */
+/*   Updated: 2021/03/23 12:35:12 by bazuara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,6 @@
 # include <stdio.h>
 
 size_t	ft_strlen(const char *s);
+char	*ft_strcpy(char *dst, const char *str);
 
 #endif

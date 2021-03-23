@@ -6,7 +6,7 @@
 /*   By: bazuara <bazuara@student.42madrid.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 09:35:11 by bazuara           #+#    #+#             */
-/*   Updated: 2021/03/23 12:04:46 by bazuara          ###   ########.fr       */
+/*   Updated: 2021/03/23 12:18:59 by bazuara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,16 @@ int	test_strlen(char *str)
 
 int	main(void)
 {
+	char *str = "Hola";
+	char *long_str = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+	char *empty_str = "";
+
 	printf("Testing strlen:\n");
-	if (test_strlen("Hola") == 0)
+	if (test_strlen(str) == 0)
 		printf("OK\n");
-	if (test_strlen("") == 0)
+	if (test_strlen(empty_str) == 0)
+		printf("OK\n");
+	if (test_strlen(long_str) == 0)
 		printf("OK\n");
 	return (0);
 }

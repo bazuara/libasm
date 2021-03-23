@@ -6,7 +6,7 @@
 #    By: bazuara <bazuara@student.42madrid.>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/18 12:35:19 by bazuara           #+#    #+#              #
-#    Updated: 2021/03/23 12:05:01 by bazuara          ###   ########.fr        #
+#    Updated: 2021/03/23 12:10:31 by bazuara          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ $(NAME):
 	@echo "Compiling asm to obj..."
 	@nasm -f macho64 $(SOURCE)
 	@echo "Compiling library..."
-	ar rcs $(NAME) $(OBJECTS_S)
+	@ar rcs $(NAME) $(OBJECTS_S)
 
 # Rule to remove object files
 clean:
