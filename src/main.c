@@ -6,7 +6,7 @@
 /*   By: bazuara <bazuara@student.42madrid.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 09:35:11 by bazuara           #+#    #+#             */
-/*   Updated: 2021/03/23 10:46:49 by bazuara          ###   ########.fr       */
+/*   Updated: 2021/03/23 12:04:46 by bazuara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int	test_strlen(char *str)
 
 int	main(void)
 {
+	printf("Testing strlen:\n");
 	if (test_strlen("Hola") == 0)
-		printf("OK");
+		printf("OK\n");
+	if (test_strlen("") == 0)
+		printf("OK\n");
 	return (0);
 }

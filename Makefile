@@ -6,12 +6,12 @@
 #    By: bazuara <bazuara@student.42madrid.>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/18 12:35:19 by bazuara           #+#    #+#              #
-#    Updated: 2021/03/23 11:00:42 by bazuara          ###   ########.fr        #
+#    Updated: 2021/03/23 12:05:01 by bazuara          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME = libasm
+NAME = libasm.a
 
 # Source files
 SOURCE_FOLDER = src/
@@ -41,8 +41,8 @@ all:	$(NAME)
 $(NAME):
 	@echo "Compiling asm to obj..."
 	@nasm -f macho64 $(SOURCE)
-	@echo "Compiling c to binary"
-	@gcc  -I$(HEADER_FOLDER) $(OBJECTS_S) $(TEST_FILE) -o $(NAME)
+	@echo "Compiling library..."
+	ar rcs $(NAME) $(OBJECTS_S)
 
 # Rule to remove object files
 clean:
@@ -53,11 +53,15 @@ clean:
 # Rule to remove binary, calls the 'clean' rule first
 fclean: clean
 	@rm -f $(NAME)
-	@echo "Deleted binary $(NAME)"
+	@echo "Deleted library $(NAME)"
 
 # Rule to remove object files and binary, then re-build everything
 re:	fclean all
 
 # Rule to debug, include norminette and similars
 test: re
-	./$(NAME)
+	@echo "Compiling test binary"
+	@gcc -I$(HEADER_FOLDER) $(NAME) $(TEST_FILE) -o test
+	@echo "Runing test program"
+	@./test
+	@rm -f test
