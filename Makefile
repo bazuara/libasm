@@ -6,7 +6,7 @@
 #    By: bazuara <bazuara@student.42madrid.>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/18 12:35:19 by bazuara           #+#    #+#              #
-#    Updated: 2021/03/23 09:39:42 by bazuara          ###   ########.fr        #
+#    Updated: 2021/03/23 11:00:42 by bazuara          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,18 +16,18 @@ NAME = libasm
 # Source files
 SOURCE_FOLDER = src/
 SOURCE_FILES = ft_strlen.s
-TEST_FILES = main.c
+
+TEST_FILE = src/main.c
 
 SOURCE = $(addprefix $(SOURCE_FOLDER), $(SOURCE_FILES))
 
 # Objects
 
 OBJECTS_C = $(TEST_FILES:.c=.o)
-OBJECTS_S = $(SOURCE_FILES:.s=.o)
+OBJECTS_S = $(SOURCE:.s=.o)
 
 # Header files
-HEADER_FOLDER = incs\
-HEADER_FILES = 
+HEADER_FOLDER = includes
 
 HEADERS = $(addprefix $(HEADER_FOLDER), $(HEADER_FILES))
 
@@ -39,16 +39,19 @@ all:	$(NAME)
 
 # Rule to build your object files and link them into a binary
 $(NAME):
-	gcc $(SOURCE) -I$(HEADER_FOLDER) -o $(NAME)
+	@echo "Compiling asm to obj..."
+	@nasm -f macho64 $(SOURCE)
+	@echo "Compiling c to binary"
+	@gcc  -I$(HEADER_FOLDER) $(OBJECTS_S) $(TEST_FILE) -o $(NAME)
 
 # Rule to remove object files
 clean:
-	@echo $(OBJECTS_S)
-	@echo $(OBJECTS_C)
+	@rm -f $(OBJECTS_S)
+	@rm -f $(OBJECTS_C)
+	@echo "Deleted all objs"
 
 # Rule to remove binary, calls the 'clean' rule first
 fclean: clean
-	@make fclean -C $(LIBFT_FOLDER)
 	@rm -f $(NAME)
 	@echo "Deleted binary $(NAME)"
 
@@ -56,5 +59,5 @@ fclean: clean
 re:	fclean all
 
 # Rule to debug, include norminette and similars
-test: fclean
+test: re
 	./$(NAME)
