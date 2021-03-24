@@ -6,7 +6,7 @@
 #    By: bazuara <bazuara@student.42madrid.>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/18 12:35:19 by bazuara           #+#    #+#              #
-#    Updated: 2021/03/24 09:34:40 by bazuara          ###   ########.fr        #
+#    Updated: 2021/03/24 09:37:15 by bazuara          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,10 +42,10 @@ all:	$(NAME)
 $(NAME):
 	@echo "Compiling asm to obj..."
 #	$(foreach file, $(SOURCE), nasm -f macho64 $(file))
-	@for file in $(SOURCE); do \
-		echo Compiling $$file; \
-		nasm -f macho64 $$file; \
-	done
+	@for file in $(SOURCE); \
+		do echo Compiling $$file; \
+			nasm -f macho64 $$file; \
+		done
 	@echo "Compiling library..."
 	@ar rcs $(NAME) $(OBJECTS_S)
 

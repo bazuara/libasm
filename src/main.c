@@ -6,7 +6,7 @@
 /*   By: bazuara <bazuara@student.42madrid.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 09:35:11 by bazuara           #+#    #+#             */
-/*   Updated: 2021/03/23 12:18:59 by bazuara          ###   ########.fr       */
+/*   Updated: 2021/03/24 10:40:22 by bazuara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,21 @@ int	test_strlen(char *str)
 	{
 		printf("Error testing strlen with %s\n", str);
 		return (1);
+	}
+	else
+		return (0);
+}
+
+int	test_strcpy(char *str)
+{
+	char *temp;
+
+	temp = malloc(sizeof(char) * (strlen(str) + 1));
+	ft_strcpy(temp, str);
+	if (memcmp(str, temp, strlen(str)) != 0)
+	{
+		printf("Error: %s and %s are different\n", str, temp);
+		return (1);	
 	}
 	else
 		return (0);
@@ -35,6 +50,13 @@ int	main(void)
 	if (test_strlen(empty_str) == 0)
 		printf("OK\n");
 	if (test_strlen(long_str) == 0)
+		printf("OK\n");
+	printf("Testing strlen:\n");
+	if (test_strcpy(str) == 0)
+		printf("OK\n");
+	if (test_strcpy(empty_str) == 0)
+		printf("OK\n");
+	if (test_strcpy(long_str) == 0)
 		printf("OK\n");
 	return (0);
 }
