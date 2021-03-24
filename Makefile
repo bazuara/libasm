@@ -6,7 +6,7 @@
 #    By: bazuara <bazuara@student.42madrid.>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/18 12:35:19 by bazuara           #+#    #+#              #
-#    Updated: 2021/03/23 12:10:31 by bazuara          ###   ########.fr        #
+#    Updated: 2021/03/24 09:34:40 by bazuara          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME = libasm.a
 
 # Source files
 SOURCE_FOLDER = src/
-SOURCE_FILES = ft_strlen.s
+SOURCE_FILES = ft_strlen.s \
+			   ft_strcpy.s
 
 TEST_FILE = src/main.c
 
@@ -40,7 +41,11 @@ all:	$(NAME)
 # Rule to build your object files and link them into a binary
 $(NAME):
 	@echo "Compiling asm to obj..."
-	@nasm -f macho64 $(SOURCE)
+#	$(foreach file, $(SOURCE), nasm -f macho64 $(file))
+	@for file in $(SOURCE); do \
+		echo Compiling $$file; \
+		nasm -f macho64 $$file; \
+	done
 	@echo "Compiling library..."
 	@ar rcs $(NAME) $(OBJECTS_S)
 
@@ -61,7 +66,7 @@ re:	fclean all
 # Rule to debug, include norminette and similars
 test: re
 	@echo "Compiling test binary"
-	@gcc -I$(HEADER_FOLDER) $(NAME) $(TEST_FILE) -o test
+	@gcc -I$(HEADER_FOLDER) -L. -lasm $(TEST_FILE) -o test
 	@echo "Runing test program"
 	@./test
 	@rm -f test
