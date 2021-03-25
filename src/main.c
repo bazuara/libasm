@@ -6,7 +6,7 @@
 /*   By: bazuara <bazuara@student.42madrid.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 09:35:11 by bazuara           #+#    #+#             */
-/*   Updated: 2021/03/24 10:40:22 by bazuara          ###   ########.fr       */
+/*   Updated: 2021/03/25 11:38:18 by bazuara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,27 @@ int	test_strcpy(char *str)
 		return (0);
 }
 
+int test_strcmp(char *str)
+{
+	if (strcmp(str, str) != ft_strcmp(str, str))
+	{
+		printf("Error testing strcmp with both %s\n", str);
+		return (1);
+	}
+	if (strcmp(str, "") != ft_strcmp(str, ""))
+	{
+		printf("Error testing strcmp with %s and empty string\n", str);
+		return (1);
+	}
+	if (strcmp("", str) != ft_strcmp("", str))
+	{
+		printf("Error testing strcmp with empty string and %s\n", str);
+		return (1);
+	}
+	else
+		return (0);
+}
+
 int	main(void)
 {
 	char *str = "Hola";
@@ -57,6 +78,13 @@ int	main(void)
 	if (test_strcpy(empty_str) == 0)
 		printf("OK\n");
 	if (test_strcpy(long_str) == 0)
+		printf("OK\n");
+	printf("Testin strcmp\n");
+	if (test_strcmp(str) == 0)
+		printf("OK\n");
+	if (test_strcmp(empty_str) == 0)
+		printf("OK\n");
+	if (test_strcmp(long_str) == 0)
 		printf("OK\n");
 	return (0);
 }
