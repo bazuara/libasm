@@ -6,7 +6,7 @@
 #    By: bazuara <bazuara@student.42madrid.>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/18 12:35:19 by bazuara           #+#    #+#              #
-#    Updated: 2021/03/24 09:37:15 by bazuara          ###   ########.fr        #
+#    Updated: 2021/03/24 11:21:00 by bazuara          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ NAME = libasm.a
 # Source files
 SOURCE_FOLDER = src/
 SOURCE_FILES = ft_strlen.s \
-			   ft_strcpy.s
+			   ft_strcpy.s \
+			   ft_strcmp.s
 
 TEST_FILE = src/main.c
 
