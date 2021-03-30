@@ -61,13 +61,17 @@ int test_strcmp(char *str)
 
 void test_write(char *str)
 {
+	printf("ft_:\n");
 	ft_write(1, str, strlen(str)); 
+	printf("sys:\n");
 	write(1, str, strlen(str)); 
 }
 
 int	test_read(char *buff_a, char *buff_b, int len)
 {
+	printf("Insert string to read with ft_: \n");
 	ft_read(1, buff_a, len);
+	printf("Insert string to read with sys: \n");
 	read(1, buff_b, len);
 	if (strcmp(buff_a, buff_b) != 0)
 	{
@@ -77,14 +81,24 @@ int	test_read(char *buff_a, char *buff_b, int len)
 	else
 		return (0);
 }
+
 int	main(void)
 {
 	char *str = "Hola\n";
-	char *long_str = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n";
+	char *long_str = "Lorem ipsum dolor sit amet, consectetur adipiscing elit,\
+ sed do eiusmod tempor incididunt ut labore et dolore magna\
+ aliqua. Ut enim ad minim veniam, quis nostrud exercitation\
+ ullamco laboris nisi ut aliquip ex ea commodo consequat.\
+ Duis aute irure dolor in reprehenderit in voluptate velit\
+ esse cillum dolore eu fugiat nulla pariatur. Excepteur\
+ sint occaecat cupidatat non proident, sunt in culpa qui\
+ officia deserunt mollit anim id est laborum.\n";
 	char *empty_str = "";
 	char buff_a[40];
 	char buff_b[40];
 
+	bzero(buff_a, 40);
+	bzero(buff_b, 40);
 	printf("Testing strlen:\n");
 	if (test_strlen(str) == 0)
 		printf("OK\n");
