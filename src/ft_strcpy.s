@@ -10,14 +10,15 @@ _ft_strcpy:
 copy:
 	mov	dl, BYTE [rsi + rcx]	;saves first of source to dl
 	cmp	dl, 0					;check if dl is 0
-	jz	return
+	je	return
 	mov	BYTE [rdi + rcx], dl	;places dl onto dest
-	jnz	increment				;if prev compair is not 0, increment
+	jmp	increment				;if prev compair is not 0, increment
 
 increment:
 	inc	rcx						;rcx++
 	jmp copy					;jump to copy for loop
 
 return:
+	mov [rdi + rcx], BYTE 0 	;set \0 at the end of dst
 	mov	rax,rdi					;moves rdi into rax
-		ret
+	ret
