@@ -82,6 +82,22 @@ int	test_read(char *buff_a, char *buff_b, int len)
 		return (0);
 }
 
+int test_strdup(char *src)
+{
+	char *dst;
+	int  flag;
+
+	flag = 0;
+	dst = ft_strdup(src);
+	if (strcmp(src, dst) != 0)
+	{
+		flag = 1;
+		printf("Error in strdup, strings differ\n src %s dst %s", src, dst);
+	}
+	free (dst);
+	return(flag);
+}
+
 int	main(void)
 {
 	char *str = "Hola\n";
@@ -126,6 +142,12 @@ int	main(void)
 	test_write(empty_str);
 	printf("Testig read:\n");
 	test_read(buff_a, buff_b, 40);
-
+	printf("Testing strdup\n");
+	if (test_strdup(str) == 0)
+		printf("OK\n");
+	if (test_strdup(long_str) == 0)
+		printf("OK\n");
+	if (test_strdup(empty_str) == 0)
+		printf("OK\n");
 	return (0);
 }

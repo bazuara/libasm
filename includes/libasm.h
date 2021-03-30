@@ -22,5 +22,7 @@ char	*ft_strcpy(char *dst, const char *str);
 int		ft_strcmp(char const *s1, char const *s2);
 size_t	ft_write(int fildes, void const *buf, size_t nbyte);
 size_t	ft_read(int fildes, void *buf, size_t nbyte);
+char 	*ft_strdup(const char *s1);
+
 
 #endif
