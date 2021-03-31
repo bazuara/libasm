@@ -6,7 +6,7 @@
 /*   By: bazuara <bazuara@student.42madrid.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 09:35:11 by bazuara           #+#    #+#             */
-/*   Updated: 2021/03/26 11:47:26 by bazuara          ###   ########.fr       */
+/*   Updated: 2021/03/31 10:27:00 by bazuara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,10 @@ int	test_read(char *buff_a, char *buff_b, int len)
 		return (1);
 	}
 	else
+	{
+		printf("OK\n");
 		return (0);
+	}
 }
 
 int test_strdup(char *src)
@@ -140,7 +143,12 @@ int	main(void)
 	test_write(str);
 	test_write(long_str);
 	test_write(empty_str);
-	printf("Testig read:\n");
+	printf("Testing read:\n");
+	printf("Insert a short string 2 times:\n");
+	test_read(buff_a, buff_b, 40);
+	printf("Insert a long string 2 times (under 40 char):\n");
+	test_read(buff_a, buff_b, 40);
+	printf("Insert an empty string 2 times:\n");
 	test_read(buff_a, buff_b, 40);
 	printf("Testing strdup\n");
 	if (test_strdup(str) == 0)
